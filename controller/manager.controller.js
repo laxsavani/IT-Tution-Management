@@ -357,7 +357,7 @@ exports.add_student_data = async (req, res) => {
             var fees = req.body.fees;
             var pending_fees = fees - paid_fees;
             req.body.pending_fees = pending_fees;
-            req.body.password = await bcrypt.hash(req.body.phone, 15);
+            req.body.password = await bcrypt.hash(req.body.phone, 12);
         }
         req.body.image = uploadedProfileImageDetails.secure_url
         console.log(uploadedProfileImageDetails);
