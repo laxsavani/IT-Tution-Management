@@ -7,38 +7,39 @@ const Manager = require("../models/manager.model");
 const bcrypt = require("bcrypt");
 
 exports.loginAdmin = async (req, res, next) => {
-    try {
-        const email = req.body.email;
-        const password = req.body.password;
-        const emailData = await Admin.findOne({ email: email });
-        if (emailData == null) {
-            const displayErrorEmail = "Email cannot match";
-            const displayErrorPassword = undefined;
-            res.render('admin_login', { displayErrorEmail, displayErrorPassword });
-            next();
-        } else {
-            const match = await bcrypt.compare(password, emailData.password);
-            if (!match) {
-                const displayErrorEmail = "Password cannot match";
+     try {
+            const email = req.body.email;
+            const password = req.body.password;
+            const emailData = await Admin.findOne({ email: email });
+            if (emailData == null) {
+                const displayErrorEmail = "Email cannot match";
                 const displayErrorPassword = undefined;
                 res.render('admin_login', { displayErrorEmail, displayErrorPassword });
                 next();
             } else {
-                const token = await jwt.sign({ _id: emailData._id }, process.env.SECRET_KEY);
-                res.cookie("jwt", token, {
-                    expires: new Date(Date.now() + 5 * 1000 * 1000 * 1000),
-                    httpOnly: true
-                });
-                res.redirect("/admin");
+                const match = await bcrypt.compare(password, emailData.password);
+                if (!match) {
+                    const displayErrorEmail = "Password cannot match";
+                    const displayErrorPassword = undefined;
+                    res.render('admin_login', { displayErrorEmail, displayErrorPassword });
+                    next();
+                } else {
+                    const token = await jwt.sign({ _id: emailData._id }, process.env.SECRET_KEY);
+                    res.cookie("jwt", token, {
+                        expires: new Date(Date.now() + 5 * 1000 * 1000 * 1000),
+                        httpOnly: true
+                    });
+                    req.flash("success", "hello")
+                    res.redirect("/admin");
+                }
             }
+        } catch (error) {
+            console.log("manager Loginmanager Error", error);
+            res.status(500).json({
+                message: "SOMETHING WENT WRONG",
+                status: 500
+            })
         }
-    } catch (error) {
-        console.log("Admin LoginAdmin Error", error);
-        res.status(500).json({
-            message: "SOMETHING WENT WRONG",
-            status: 500
-        })
-    }
 };
 
 exports.dashboardAdmin = async (req, res) => {
@@ -136,5 +137,3 @@ exports.deleteManager = async (req, res) => {
         });
     }
 }
-
-
