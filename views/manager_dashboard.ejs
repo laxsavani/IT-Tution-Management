@@ -1,0 +1,447 @@
+<%-include('header')%>
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Dashboard Analytics</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Dashboard Analytics</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <div class="col-lg-7 col-md-12">
+                <!-- support-section start -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card p-2 support-bar overflow-hidden">
+                          
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card p-2 support-bar overflow-hidden">
+                       
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- support-section end -->
+            </div>
+            <div class="col-lg-5 col-md-12">
+                <!-- page statustic card start -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <% const myArray =enquiryData%>
+                                <%let count = 0;%>
+                                <%for (let i = 0; i < myArray.length; i++) {%>
+                                <%count++;%>
+                                <%}%>
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h4 class="text-c-yellow">  <%=count%></h4>
+                                        <h5 class="text-muted m-b-0">enquires</h5>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <i class="feather icon-bar-chart-2 f-28"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-c-yellow">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                       
+                                        <p class="text-white m-b-0">% change</p>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <% const admission =studentData%>
+                                        <%let counts = 0;%>
+                                        <%for (let i = 0; i < admission.length; i++) {%>
+                                        <%counts++;%>
+                                        <%}%>
+                                        <h4 class="text-c-green"><%=counts%></h4>
+                                        <h5 class="text-muted m-b-0">addmissions</h5>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <i class="feather icon-file-text f-28"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-c-green">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <p class="text-white m-b-0">% change</p>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h4 class="text-c-green">5</h4>
+                                        <h5 class="text-muted m-b-0">admins</h5>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <i class="feather icon-calendar f-28"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-c-red">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <p class="text-white m-b-0">% change</p>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-down text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h4 class="text-c-blue">500</h4>
+                                        <h5 class="text-muted m-b-0">Downloads</h5>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <i class="feather icon-thumbs-down f-28"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-c-blue">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <p class="text-white m-b-0">% change</p>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-down text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- page statustic card end -->
+
+            </div>
+
+            <!-- prject ,team member start -->
+           
+           
+        
+             <div class="col-lg-12 col-xl-12 col-md-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <h5>Active Enquiry</h5>
+                        <div class="card-header-right">
+                            <div class="btn-group card-option">
+                                <h5 >
+                                    Search Enquiry : <input type="text" class="m-2  rounded" id="searchBox" onkeyup="searchTable()">
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="enquird_table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>phone</th>
+                                        <th> Date</th>
+                                        <th>field</th>
+                                        <th class="">reasons</th>
+                                        <th class="">Action</th>
+                                    </tr>
+                                </thead>
+                       
+                                <tbody>
+                                    <%for(var e of activeEnquiry){%>
+                                      
+                                        <tr id="myText" style='background-color:<%=e.color%>'>
+                                            <input type="text" id="del_enq" hidden value="<%=e.id%>">
+                                            <%if(e.enquiry_number==0){%>
+                                                <form hidden id="myForm"  action="/manager/default_enq_color" method="post">
+                                                    <input hidden type="text" id="default_colors" name="id" hidden value="<%=e.id%>">
+                                                    <input hidden type="submit">
+                                                </form>
+                                                <%}%>
+                                               
+                                        <td><%=e.name%></td>
+                                        <td><%=e.phone%></td>
+                                        <td><%=e.date[8]%><%=e.date[9]%>/<%=e.date[5]%><%=e.date[6]%>/<%=e.date[0]%><%=e.date[1]%><%=e.date[2]%><%=e.date[3]%></td>
+                                        <td><%=e.field%></td>
+                                      
+                                        <td><textarea class="form-control bg-white" disabled>  <%=e.resoan%></textarea></td>
+                                        <td class="text-right d-flex">
+                                            <a href="/manager/add_addmission" onclick="enquiry()"  type="button" class="btn  btn-icon border-5 border-danger">
+                                                <i class="feather text-danger icon-thumbs-up"></i>
+                                            </a>
+                                            <form action="/manager/change_color/<%=e.id%>" method="post">
+                                                 <input type="text" name="id" id="dataid" hidden value="<%=e.id%>" >
+                                                <button type="submit" class="btn  mx-2 btn-icon border-5 border-danger">
+                                                    <i class="feather text-danger fw-bold icon-phone-call"></i>
+                                                </button>
+                                            </form>  
+                                            <a href="/manager/delete_enquiry/<%=e.id%>" type="button" class="btn  btn-icon border-5 border-danger">
+                                                <i class="feather feather text-danger icon-slash"></i>
+                                            </a>
+                                            <a href="/manager/update_enquiry/<%=e.id%>" type="button" class="btn mx-2  btn-icon border-5 border-danger">
+                                                <i class="feather feather text-danger icon-message-circle"></i>  
+                                            </a>
+
+                                           
+                                            <a href="/manager/deActive/<%=e.id%>" class="btn border border-danger mx-2 text-danger" style="border-radius: 30px;">Deactive</a>
+                                            
+                                        </td>
+                                    </tr>  
+                                    <%}%>
+                                                                     
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-xl-12 col-md-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <h5>Demo Enquiry</h5>
+                        <div class="card-header-right">
+                            <div class="btn-group card-option">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="enquird_table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>phone</th>
+                                        <th> Date</th>
+                                        <th>field</th>
+                                        <th>time</th>
+                                        <th>start Date</th>
+                                        <th>end date</th>
+                                        <th class="">reasons</th>
+                                        <th class="">Action</th>
+                                    </tr>
+                                </thead>
+                       
+                                <tbody>
+                                    <%for(var e of deactiveEnquiry){%>
+
+                                        
+                                        <%if(e.enquiry_number==0){%>
+                                            <form id="myForm"  action="/manager/default_enq_color" method="post">
+                                                <input  type="text" id="default_colors" name="id"  value="<%=e.id%>">
+                                                <input  type="submit">
+                                            </form>
+                                            <%}%>
+                                    <tr id="myText" style="background-color:<%=e.color%>">
+                                        <input type="text" id="del_enq" hidden value="<%=e.id%>">
+                                        <td><%=e.name%></td>
+                                        <td><%=e.phone%></td>
+                                        <td><%=e.date[8]%><%=e.date[9]%>/<%=e.date[5]%><%=e.date[6]%>/<%=e.date[0]%><%=e.date[1]%><%=e.date[2]%><%=e.date[3]%></td>
+                                        <td><%=e.field%></td>
+                                        <td><%=e.time%></td>
+                                        <%if(e.start_date){%>
+                                        <td><%=e.start_date%></td>
+                                        <td><%=e.end_date%></td>
+                                <%}%>
+                                        <td><textarea class="form-control bg-white" disabled>  <%=e.resoan%></textarea></td>
+                                        <td class="text-right d-flex">
+                                            <a href="/manager/add_admission/" onclick="enquiry()"  type="button" class="btn  btn-icon border-5 border-danger">
+                                                <i class="feather text-danger icon-thumbs-up"></i>
+                                            </a>
+                                            <form action="/manager/change_color/<%=e.id%>" method="post">
+                                                <input type="text" name="id" hidden value="<%=e.id%>">
+                                                <button type="submit" class="btn  mx-2 btn-icon border-5 border-danger">
+                                                    <i class="feather text-danger fw-bold icon-phone-call"></i>
+                                                </button>
+                                            </form>  
+                                            <a href="/manager/delete_enquiry/<%=e.id%>" type="button" class="btn  btn-icon border-5 border-danger">
+                                                <i class="feather feather text-danger icon-slash"></i>
+                                            </a>
+                                            <a href="/manager/update_enquiry/<%=e.id%>" type="button" class="btn mx-2  btn-icon border-5 border-danger">
+                                                <i class="feather feather text-danger icon-message-circle"></i>  
+                                            </a>
+                                            <a href="/manager/update_enquiry_demo_page/<%=e.id%>" type="button" class="btn border border-5 text-danger border-danger" style="border-radius: 30px;">
+                                                demo
+                                            </a>
+                                            <a href="/manager/Active/<%=e.id%>" class="btn border mx-2 text-danger border-danger" style="border-radius: 30px;">Active</a>
+                                            
+                                        </td>
+                                    </tr>  
+                                    <%}%>
+                                                                     
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+
+           
+            <!-- prject ,team member start -->
+            <!-- seo start -->
+            <div class="col-xl-4 col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h3>$16,756</h3>
+                                <h6 class="text-muted m-b-0">Visits<i class="fa fa-caret-down text-c-red m-l-10"></i></h6>
+                            </div>
+                            <div class="col-6">
+                                <div id="seo-chart1" class="d-flex align-items-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h3>49.54%</h3>
+                                <h6 class="text-muted m-b-0">Bounce Rate<i class="fa fa-caret-up text-c-green m-l-10"></i></h6>
+                            </div>
+                            <div class="col-6">
+                                <div id="seo-chart2" class="d-flex align-items-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h3>1,62,564</h3>
+                                <h6 class="text-muted m-b-0"> <i class="fa fa-caret-down text-c-red m-l-10"></i></h6>
+    <a data-role="none" href="#" onclick="doLogout()">fgfffn</a>
+                            
+                            </div>
+                            <div class="col-6">
+                                <div id="seo-chart3" class="d-flex align-items-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- seo end -->
+            </div>
+    
+        </div>
+        <!-- [ Main Content ] end -->
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function doLogout() {
+      console.log(window.history)
+    }
+    </script>
+    
+<script>
+    
+    function enquiry(){
+    var dataid=document.getElementById('dataid').value;
+    $.ajax({
+        url:'/manager/delete_enq_confirm',
+        type:'post',
+        data:{
+            'dataid':dataid,
+        }
+    })
+}
+
+var myForm = document.getElementById('myForm');
+if(myForm){
+    document.getElementById("myForm").submit();
+}
+function searchTable() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById('searchBox');
+			filter = input.value.toUpperCase();
+			table = document.getElementsByTagName('table')[0];
+			tr = table.getElementsByTagName('tr');
+
+			// Loop through all table rows, and hide those that don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName('td');
+				for (var j = 0; j < td.length; j++) {
+					txtValue = td[j].textContent || td[j].innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+						break;
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+
+        var success=document.getElementById('hideDiv')
+      if(success){
+        setTimeout(() => {
+         location.reload()
+        }, 900);
+      }
+
+
+
+
+</script>
+<script>
+    window.location.replace(url);
+
+    window.addEventListener("load", function () {
+    const loader = document.querySelector("#spinner");
+    loader.className += " hidden"; // class "loader hidden"
+});
+</script>
+<%-include('footer')%>

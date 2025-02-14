@@ -1,0 +1,185 @@
+<%- include('header') %>
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Form Elements</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
+                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="card m-0">
+
+
+
+
+                        <div class="card-body">
+                            <h5>Addmission</h5>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6 col-xl-12 col-xxl-12">
+                                    <form action="/manager/add_student_data" enctype="multipart/form-data"
+                                        class="d-flex col-12 flex-wrap" method="post">
+                                        <div class="col-12 col-xl-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Enter student name </label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="name" id="fname"
+                                                    placeholder="Enter name ">
+                                            </div>
+                                            <div class="form-group" style="margin-top: 1.3rem;">
+                                                <label for="exampleInputEmail1" class="my-1">Select Gender
+                                                </label>
+                                                <br>
+                                                <div class="d-flex align-items-center my-3">
+                                                    <input required type="radio" class="mx-2" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" name="gender" value="male"
+                                                        id="gender">
+                                                    male
+                                                    <input required type="radio" class="mx-2" id="exampleInputEmail1"
+                                                        aria-describedby="emailHelp" name="gender" value="female"
+                                                        id="gender">
+                                                    female
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Date of birth</label>
+                                                <input required type="date" class="form-control" id="exampleInputEmail1"
+                                                    name="dob" aria-describedby="emailHelp" placeholder="Enter email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Enter address </label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="address" id="fname"
+                                                    placeholder="Enter address ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"> student phone </label>
+                                                <input required type="text" class="form-control phoneNumberInput"
+                                                    onkeypress="validateInput(event)" aria-describedby="emailHelp"
+                                                    name="phone" placeholder="Enter student phone ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Enter student email </label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="email" id="fname"
+                                                    placeholder="Enter student email ">
+                                            </div>
+
+                                            <% var course=['basic Programming','Android Development','Ios Development','Flutter Development','Front-End Designing','Front End Devloping','Back End Developing','Graphic Design','Game Design','Game Development','Animation','Blockchain Technology','Digital Marketing','Python']%>
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Course</label>
+                                                    <select required name="cource" id="cource" class="form-control">
+                                                        <option value="" hidden>select course</option>
+
+                                                        <% course.forEach((v , i )=>{ %>
+                                                            <option value="<%=v%>">
+                                                                <%= v %>
+                                                            </option>
+                                                            <% }) %>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                        <div class="col-12 col-xl-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">what are student studying ?
+                                                </label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="studyin" id="fname"
+                                                    placeholder="student studyin ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Enter student institute</label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="institute_name" id="fname"
+                                                    placeholder="student institute ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">father name </label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="father_name" id="fname"
+                                                    placeholder="Enter father name ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">father education qualification
+                                                </label>
+                                                <input required type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" name="edu_qualification_father"
+                                                    id="fname" placeholder="Enter father qualification">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">father phone no</label>
+                                                <input required type="text" class="form-control phoneNumberInput"
+                                                    onkeypress="return validate(event)" aria-describedby="emailHelp"
+                                                    name="father_phone" id="my" placeholder="Enter father mobile">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">select student image</label>
+                                                <input required type="file" class="form-control"
+                                                    accept=".jpg,.jpeg,.png,.gif" id="exampleInputPassword1 "
+                                                    name="image">
+                                            </div>
+                                            <%var grid=data.length+1000%>
+                                                <input hidden type="text" <% for (var i=0; i < grid; i++) { %> value="<%=grid%>" <% } %> name="grid">
+                                                        <div class="form-group">
+
+
+                                                            <label for="exampleInputEmail1"> student fees </label>
+                                                            <input required type="text" class="form-control"
+                                                                onkeypress="return isNumber(event)"
+                                                                aria-describedby="emailHelp" name="fees"
+                                                                placeholder="Enter student fees ">
+                                                        </div>
+                                                       
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">batch time</label>
+                                                            <select required name="batch_time" id="cource" class="form-control">
+                                                                <option value="" hidden>select batch time</option>
+                                                                <% var time = ['07:00 am', '08:00 am', '09:00 am', '10:00 am', '11:00 am', '12:00 pm', '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm', '05:00 pm', '06:00 pm', '07:00 pm', '08:00 pm', '09:00 pm', '10:00 pm'] %>
+                                                                <% time.forEach((s , j )=>{ %>
+                                                                    <option value="<%=s%>">
+                                                                        <%= s %>
+                                                                    </option>
+                                                                    <% }) %>
+                                                            </select>
+                                                        </div>
+                                                    <input type="input" hidden value="0" name="paid_fees" id="paid_fees">
+                                               </div>
+
+
+                                </div>
+                                <button type="submit" class="btn mx-3  btn-primary">Submit</button>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        </div>
+
+        </div>
+    </section>
+
+    <%- include('footer') %>

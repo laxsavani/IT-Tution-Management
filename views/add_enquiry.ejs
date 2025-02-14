@@ -1,0 +1,99 @@
+<%-include('header')%>
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-c">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Form Elements</h5>
+                            </div>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#!">Form Components</a></li>
+                                <li class="breadcrumb-item"><a href="#!">Form Elements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <!-- [ Main Content ] start -->
+            <div class="row">
+
+                <!-- [ form-element ] start -->
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Add enquiry</h5>
+                            <% if (messages.success) { %>
+                           
+                              <div class="alert my-4 alert-success">
+                                  <%= messages.success %>
+                              </div>
+                             
+                              <% } %>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form class="d-flex flex-wrap" style="text-transform: capitalize;" action="/manager/add_enquiry_data" method="post">
+                                        <div class="col-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">student name</label>
+                                                <input required type="text" class="form-control" name="name"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                    placeholder="student name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">select enquiry date</label>
+                                                <input required type="date" name="date" class="form-control"
+                                                    id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                    placeholder="select date">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">student phone</label>
+                                                <input required type="text" name="phone" id="myInput"
+                                                    onkeypress="validateInput(event)" class="form-control"
+                                                    id="exampleInputPassword1" placeholder="student mobile no">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">student field</label>
+                                                <input required type="text" name="field" class="form-control"
+                                                    id="exampleInputPassword1" placeholder="student field">
+                                                <input type="text" name="resoan" hidden>
+                                            </div>
+                                        </div>
+                                        <div>
+
+                                            <button type="submit" onclick="" class="btn  btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Input group -->
+
+                </div>
+                <!-- [ form-element ] end -->
+            </div>
+            <!-- [ Main Content ] end -->
+
+        </div>
+    </section>
+    <script>
+    </script>
+    <style>
+        #spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+    </style>
+    <%-include('footer')%>

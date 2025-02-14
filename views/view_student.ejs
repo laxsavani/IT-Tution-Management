@@ -1,0 +1,119 @@
+<%-include('header')%>
+    <section class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h5 class="m-b-10">Student Table</h5>
+                            </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/manager"><i
+                                                    class="feather icon-home"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="#!">student table</a></li>
+                                        <!-- <li class="breadcrumb-item"><a href="#!">Basic Tables</a></li> -->
+                                    </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Student Table</h5>
+                            <br>
+                            <br>
+                        
+                            <span class="d-block m-t-5">  <h5>Search Student :</h5>
+                            <input type="text" id="searchBox" onkeyup="searchTable()"></span>
+                            <% if (messages.success) { %>  
+                                <div class="alert my-4 alert-success">
+                                    <%= messages.success %>
+                                </div>                  
+                                <% } %>
+                        </div>
+                        <div class="card-body table-border-style">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>GRID</th>
+                                            <th>Student Name</th>
+                                            <th class="d-none d-md-block d-lg-block ">email</th>
+                                            <th>course</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for(var i of data){%>
+                                            <tr style="background-color:<%=i.color%>">
+                                                <%if(i.student_color_number==0){%>
+                                                    <form hidden id="myForm" action="/manager/student_color_number" method="post">
+
+                                                        <input hidden type="text" name="id" value="<%=i.id%>">
+                                                        <input hidden type="submit">
+                                                    </form>
+                                                    <%}%>
+                                                        <td name="grid" id="grid">
+                                                            <%=i.grid%>
+                                                        </td>
+                                                        <td>
+                                                            <%=i.name%>
+                                                        </td>
+                                                        <td class="d-none d-md-block d-lg-block ">
+                                                            <%=i.email%>
+                                                        </td>
+                                                        <td>
+                                                            <%=i.cource%>
+                                                        </td>
+                                                        <td><a href="/manager/view_addmission_profile/<%=i.id%>"
+                                                                
+                                                                class="btn border-danger rounded-pill px-3 py-2">details</a>
+                                                        </td>
+                                            </tr>
+                                            <%}%>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        var myForm = document.getElementById('myForm');
+        if (myForm) {
+            document.getElementById("myForm").submit();
+        }
+
+        function searchTable() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById('searchBox');
+			filter = input.value.toUpperCase();
+			table = document.getElementsByTagName('table')[0];
+			tr = table.getElementsByTagName('tr');
+
+			// Loop through all table rows, and hide those that don't match the search query
+			for (i = 1; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName('td');
+				for (var j = 0; j < td.length; j++) {
+					txtValue = td[j].textContent || td[j].innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+						break;
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+    </script>
+
+    <%-include('footer')%>

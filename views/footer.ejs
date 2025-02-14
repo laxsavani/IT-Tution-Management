@@ -1,0 +1,34 @@
+<script src="/js/vendor-all.min.js"></script>
+<script src="/js/plugins/bootstrap.min.js"></script>
+<script src="/js/ripple.js"></script>
+<script src="/js/pcoded.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<!-- Apex Chart -->
+<script src="/js/plugins/apexcharts.min.js"></script>
+
+
+<!-- custom-chart js -->
+<script src="/js/pages/dashboard-main.js"></script>
+<script>
+    
+    function changeColor() {
+        var text = document.getElementById("myText");
+        text.style.background = "green";
+        setTimeout(function () {
+            text.style.background = "#ffcfcf";
+        }, 2000);
+    }
+
+    window.addEventListener('pageshow', (event) => {
+  // Check if the page is retrieved from the bfcache
+  if (event.persisted && !document.cookie.match(/jwt/)) {
+    // Force a reload if the user has logged out
+    location.reload();
+  }
+ });
+</script>
+</body>
+
+</html>

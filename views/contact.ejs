@@ -1,0 +1,95 @@
+<%-include('student_header')%>
+
+  <main>
+    <section>
+      <div class="d-flex justify-content-center fw-bold"
+        style="background-repeat: no-repeat;background-size: cover; background-image:url(https://morsymultimedia.com/wp-content/uploads/2023/03/WhatsApp-Image-2023-03-09-12.58.17.jpg)">
+        <div class="w-100 h-100 d-flex justify-content-center" style="background-color: #0f51948d;">
+          <h2 class="text-white m-5 p-5 fs-1">Contact Us</h2>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Contact</span>
+          <h2>Contact</h2>
+          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Vadvala Society, Sagar Society, Varachha, Surat, Gujarat 395006</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@morsymultimedia.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+91 90992 24244</p>
+              </div>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.4311422781857!2d72.87044241744384!3d21.21474539999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f53d8d7108f%3A0x4ffd5d0e9bd36f9c!2sMorsy%20multimedia%20%26%20Education!5e0!3m2!1sen!2sin!4v1679900811510!5m2!1sen!2sin"
+                frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6 mt-3 mt-md-0">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit" disabled>Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+  </main>
+  <script src="../assets/js/main.js"></script>
+<script>
+   window.addEventListener('pageshow', (event) => {
+  // Check if the page is retrieved from the bfcache
+  if (event.persisted && !document.cookie.match(/jwt/)) {
+    // Force a reload if the user has logged out
+    location.reload();
+  }
+ });
+</script>
+  <%-include('student_footer')%>

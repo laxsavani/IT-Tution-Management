@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morsy Multimedia & education</title>
+</head>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Work+Sans&display=swap">
+
+
+<body class="login_datas">
+
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 col-lg-9 ">
+
+                <div class="AppForm shadow-lg ">
+                    <div class="row">
+                        <div class="col-12 col-lg-6 p-3 d-flex justify-content-center align-items-center">
+                            <div class="AppFormLeft col-12 ">
+                                        <h1 class="text-center mb-2">create password</h1>
+                                        <% if (messages.success) { %>
+                                            <div class="text-center text-success my-2"><%= messages.success %></div>
+                                          <% } %>
+                                          <% if (messages.error) { %>
+                                            <div class="text-center text-danger my-2"><%= messages.error %></div>
+                                          <% } %>
+                                        <form action="/student/newpass" method="post">
+                                            <div class="form-group position-relative mb-4">
+                                                <input type="text" value="<%=data.id%>" name="id" hidden>
+                                                <input required name="oldpass" type="text"
+                                                    class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
+                                                    id="email" placeholder="old password"/>
+                                                <i class="fa fa-pencil"></i>
+                                            </div>
+                                            <div class="form-group position-relative mb-4">
+                                                <input required name="npass" type="text"
+                                                    class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
+                                                    id="email" placeholder="new password"/>
+                                                <i class="fa fa-pencil"></i>
+                                            </div>
+                                            <div class="form-group position-relative mb-4">
+                                                <input required name="cpass" type="text"
+                                                    class="form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none"
+                                                    id="email" placeholder="confirm password"/>
+                                                <i class="fa fa-pencil"></i>
+                                            </div>
+
+
+
+                                            <button name="submit" type="submit"
+                                                class="btn btn-success btn-block shadow border-0 py-2 text-uppercase ">
+                                                submit
+                                            </button>
+                                        </form>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 d-none d-lg-block">
+                            <div
+                                class="AppFormRight position-relative d-flex justify-content-center flex-column align-items-center text-center p-5 text-white">
+                                <h2 class="position-relative px-4 m-0 text-white">Morsy</h2>
+                                <p class="m-0">Multimedia & Education</p>
+                                <p style="font-size: 13px;">more than expectation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Required Js -->
+<script src="/js/vendor-all.min.js"></script>
+<script src="/js/plugins/bootstrap.min.js"></script>
+<script src="/js/ripple.js"></script>
+<script src="/js/pcoded.min.js"></script>
+
+</html>

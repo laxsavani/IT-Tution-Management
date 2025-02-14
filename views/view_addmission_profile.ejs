@@ -1,0 +1,774 @@
+<%-include('header')%>
+  <div class="pcoded-main-container" style="background-color: #f5f5f5 !important;">
+    <div class="main-body">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/manager">Home</a></li>
+          <li class="breadcrumb-item"><a href="/manager/view_student">Students</a></li>
+          <li class="breadcrumb-item active" aria-current="#">Student Details</li>
+        </ol>
+      </nav>
+      <!-- /Breadcrumb -->
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-1">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="<%=profile.image%>" alt="Admin" class="rounded-circle" width="150" height="150">
+                    <div class="mt-3">
+                      <h4>
+                        <%=profile.name%>
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h4>parents info</h4>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    name : <%=profile.father_name%>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    mobile no : <%=profile.father_phone%>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    qualification : <%=profile.edu_qualification_father%>
+                  </li>
+                </ul>
+              </div>
+              <div class="card p-1 mt-1">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h4>wants to pay fees</h4>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <form action="/manager/pay_fees" method="post" class="w-100 ">
+                      <label for="">paid fees by student</label>
+                      <input required type="text" onkeypress="return isNumber(event)" name="amount"
+                        placeholder="paid fees by student" class="form-control w-100">
+                      <input type="text" name="student_id" value="<%=profile.id%>" hidden>
+                      <div class="d-flex">
+                        <div class="w-50 px-2">
+                          <label for="" class="mt-2">paying type</label>
+                          <select required name="pay_type" id="pay_type" onchange="return pay()" class="form-control p-0">
+                            <option value="" hidden>select</option>
+                            <option value="cash">cash</option>
+                            <option value="cheque">cheque</option>
+                            <option value="online">online</option>
+                          </select>
+                        </div>
+                        <div class="mx-2 w-50 px-2">
+                          <label for="" class="mt-2">payment date</label>
+                          <input required type="date" name="date" placeholder="" class="form-control p-0">
+                        </div>
+                      </div>
+                     <div class="mt-2" id="payIdfiled">
+
+                     </div>
+
+                      <button class="btn btn-info my-3"> submit</button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">GRID</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.grid %>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.name%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.email%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mobile</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.phone%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">course</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.cource%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.address%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Gender</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.gender%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">date of birth</h6>
+                    </div>
+
+
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.dob%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">last institute</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.institute_name%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">student studying in</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.studyin%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">student fees</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.fees%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">paid fees</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.paid_fees%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">pending fees</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.pending_fees%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Batch time</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <%=profile.batch_time%>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info m-2"
+                        href="/manager/update_student/<%=profile.id%>">Edit</a>
+                      <button class="btn-info btn m-2" onclick="createPDF()">print</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <div class="p-5 card-body flex-wrap justify-content-between d-flex" id="s"></div>
+        </div>
+  </div>
+  
+
+        <input type="text" hidden value="<%=calendarHtml%>" id="d">
+  <div id="ddd">
+    <div class="body" style="overflow: scroll;">
+
+      <div id="invoiceholder">
+
+        <div id="headerimage"></div>
+        <div id="invoice" class="effect2">
+
+          <div id="invoice-top" style="display: flex; justify-content: center; align-items: center;">
+
+            <img src="/images/morsy.png" height="63px" alt="">
+
+            <div class="info">
+              <h2 style="font-size:48px; color: #c7242e;" class="mt-2"> Multimedia <span
+                  style="color: #135597;">&</span> Education</h2>
+            </div><!--End Info-->
+          </div><!--End InvoiceTop-->
+
+
+
+          <div id="invoice-mid">
+
+            <div class="clientlogo"></div>
+            <div class="info">
+              <h2>Name: <%=profile.name %>
+              </h2>
+              <p class="m-0">student email : <%=profile.email%>
+              </p>
+              <p class="mt-2">student phone : <%=profile.phone%>
+              </p>
+            </div>
+            <%if(last_fees.length==1){%>
+              <div id="project">
+                <h2>Fees Description</h2>
+                <p class="fs-2 m-0">Fees paid by : <%=last_fees[0]['pay_type']%>
+                </p>
+                <p class="mt-2">Date of paying fees : <%=last_fees[0]['date']%>
+                </p>
+              </div>
+
+          </div><!--End Invoice Mid-->
+
+          <div id="invoice-bot">
+
+            <div id="table">
+              <table>
+                <tr class="tabletitle">
+                  <td class="item" colspan="2">
+                    <h2>Item Description</h2>
+                  </td>
+      
+                  <td class="subtotal"></td>
+                  <td class="subtotal">
+                    <h2>Sub-total</h2>
+                  </td>
+                </tr>
+
+                <tr class="service">
+                  <td class="tableitem" colspan="3">
+                    <p class="itemtext">fees paid</p>
+                  </td>
+
+                  <td class="tableitem">
+                    <p class="itemtext">
+                      <%=last_fees[0]['amount']%>
+                    </p>
+                  </td>
+                </tr>
+                <tr class="tabletitle">
+                  <td colspan="2" style="font-size: 1.2rem;">fees in words : <span id="fees_in_words"></span></td>
+                  <td class="Rate">
+                    <h2 >Total :</h2>
+                  </td>
+                  <td class="payment">
+                    <h2 id="fees_words" class="m-0" style="transform: translateX(13px);">
+                      <%=last_fees[0]['amount']%>
+                    </h2>
+                  </td>
+                </tr>
+                <tr class="tabletitle " style="background-color: #fff !important;">
+                  <td colspan="2">
+                    <%if(last_fees[0]['pay_type']=='cheque'){%>
+                      <%=last_fees[0]['pay_type']%>
+                        No : <%=profile.payment_id%>
+                      <%}%>
+                    <%if(last_fees[0]['pay_type']=='online'){%>
+                        transaction Id : <%=profile.payment_id%>
+                      <%}%>
+                  </td>
+                  <td class="Rate">
+                    <h2 style="transform: translateY(10px);">sign :</h2>
+                  </td>
+                  <td class="payment p-3">
+                    <h2 id="fees_words m-0" style="transform: translateY(20px);">
+                      ___________________
+                    </h2>
+                  </td>
+                </tr>
+              </table>
+            </div><!--End Table-->
+
+            <%}%>
+          </div><!--End InvoiceBot-->
+        </div><!--End Invoice-->
+      </div><!-- End Invoice Holder-->
+
+    </div>
+    <div class="body" style="overflow: scroll;">
+
+      <div id="invoiceholder">
+
+        <div id="headerimage"></div>
+        <div id="invoice" class="effect2">
+
+          <div id="invoice-top" style="display: flex; justify-content: center; align-items: center;">
+
+            <img src="/images/morsy.png" height="63px" alt="">
+
+            <div class="info">
+              <h2 style="font-size:48px; color: #c7242e;" class="mt-2"> Multimedia <span
+                  style="color: #135597;">&</span> Education</h2>
+            </div><!--End Info-->
+          </div><!--End InvoiceTop-->
+
+
+
+          <div id="invoice-mid">
+
+            <div class="clientlogo"></div>
+            <div class="info">
+              <h2>Name: <%=profile.name %>
+              </h2>
+              <p class="m-0">student email : <%=profile.email%>
+              </p>
+              <p class="mt-2">student phone : <%=profile.phone%>
+              </p>
+            </div>
+            <%if(last_fees.length==1){%>
+              <div id="project">
+                <h2>Fees Description</h2>
+                <p class="fs-2 m-0">Fees paid by : <%=last_fees[0]['pay_type']%>
+                </p>
+                <p class="mt-2">Date of paying fees : <%=last_fees[0]['date']%>
+                </p>
+              </div>
+
+          </div><!--End Invoice Mid-->
+
+          <div id="invoice-bot">
+
+            <div id="table">
+              <table>
+                <tr class="tabletitle">
+                  <td class="item" colspan="2">
+                    <h2>Item Description</h2>
+                  </td>
+      
+                  <td class="subtotal"></td>
+                  <td class="subtotal">
+                    <h2>Sub-total</h2>
+                  </td>
+                </tr>
+
+                <tr class="service">
+                  <td class="tableitem" colspan="3">
+                    <p class="itemtext">fees paid</p>
+                  </td>
+
+                  <td class="tableitem">
+                    <p class="itemtext">
+                      <%=last_fees[0]['amount']%>
+                    </p>
+                  </td>
+                </tr>
+                <tr class="tabletitle">
+                  <td colspan="2" style="font-size: 1.2rem;">fees in words : <span id="fees_in_word"></span></td>
+                  <td class="Rate">
+                    <h2 >Total :</h2>
+           
+                  </td>
+                  <td class="payment">
+                    <h2 id="fees_words" class="m-0" style="transform: translateX(13px);">
+                      <%=last_fees[0]['amount']%>
+                    </h2>
+                  </td>
+                </tr>
+                <tr class="tabletitle " style="background-color: #fff !important;">
+                  <td colspan="2">
+                    <%if(last_fees[0]['pay_type']=='cheque'){%>
+                      <%=last_fees[0]['pay_type']%>
+                        No : <%=profile.payment_id%>
+                      <%}%>
+                      <%if(last_fees[0]['pay_type']=='online'){%>
+                        transaction Id : <%=profile.payment_id%>
+                      <%}%>
+                  </td>
+                  <td class="Rate">
+                    <h2 style="transform: translateY(10px);">sign :</h2>
+                  </td>
+                  <td class="payment p-3">
+                    <h2 id="fees_words m-0" style="transform: translateY(20px);">
+                      ___________________
+                    </h2>
+                  </td>
+                </tr>
+              </table>
+            </div><!--End Table-->
+
+            <%}%>
+          </div><!--End InvoiceBot-->
+        </div><!--End Invoice-->
+      </div><!-- End Invoice Holder-->
+
+    </div>
+   
+  </div>
+  <div class="card">
+    <div class="owl-carousel card-body" style="display:flex; flex-wrap: wrap !important; justify-content:space-between " id="s"></div>
+  </div>
+</div>
+
+</body>
+ <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,900,700,500,300,100);
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+  
+   .card-body h2{
+      font-weight: 900;
+      font-size: 20px;
+      padding: 30px 0 5px 0;
+    }
+    .body {
+      background: #fff;
+      font-family: "Roboto", sans-serif;
+      background-size: 100%;
+      height: 700px;
+    }
+    .body::-webkit-scrollbar {
+      width: -0px;
+    }
+    ::selection {
+      background: #f31544;
+      color: #fff;
+    }
+    ::moz-selection {
+      background: #f31544;
+      color: #fff;
+    }
+    .body h1 {
+      font-size: 1.5em;
+      color: #222;
+    }
+    .body h2 {
+      font-size: 1.5em;
+      color:#000
+    }
+    .body h3 {
+      font-size: 1.5em;
+      font-weight: 300;
+      line-height: 2em;
+    }
+    .body p {
+      font-size: 1.3rem;
+      color: #000;
+      font-weight: 600;
+      line-height: 1.4em;
+    }
+    .body #invoiceholder {
+      width: 100%;
+      height: 100px;
+    }
+    .body #headerimage {
+      z-index: -1;
+      position: relative;
+      top: -50px;
+      height: 350px;
+      -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      background-attachment: fixed;
+      background-size: 1920px 80%;
+      background-position: 50% -90%;
+    }
+    td{
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #000;
+    }
+    .body #invoice {
+      position: relative;
+      top: -290px;
+      border:solid 1px;
+      margin: 0 auto;
+      width: 1100px;
+      scale: 1.001;
+      background: #fff;
+    }
+    [id*="invoice-"] {
+      /* Targets all id with 'col-' */
+      border-bottom: 1px solid #eee;
+      padding: 30px;
+    }
+    .body #invoice-top {
+      min-height: 120px;
+    }
+    .body #invoice-mid {
+      min-height: 120px;
+    }
+    .body #invoice-bot {
+      min-height: 250px;
+    }
+    .body .logo {
+      float: left;
+      height: 60px;
+      width: 60px;
+      /* background: url(/images/MME\ LOGO1\ \(1\).png); */
+      background-size: 60px 60px;
+    }
+    .body .info {
+      display: block;
+      display: flex;
+      float: left;
+      margin-left: 20px;
+    }
+    .body .title {
+      float: right;
+    }
+    .body .title p {
+      text-align: right;
+    }
+    .body #project {
+      margin-left: 52%;
+    }
+    .body table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .body td {
+      padding: 5px 0 5px 15px;
+      border: 1px solid #eee;
+    }
+    .body .tabletitle {
+      padding: 5px;
+      background: #afafaf;
+    }
+    .body .service {
+      border: 1px solid #eee;
+    }
+    .body .item {
+      width: 50%;
+    }
+    .body .itemtext {
+      font-size: 1.6rem;
+      margin:0;
+      padding: 10px;
+    }
+    .body #legalcopy {
+      margin-top: 30px;
+    }
+    .body form {
+      float: right;
+      margin-top: 30px;
+      text-align: right;
+    }
+    .body .effect2 {
+      position: relative;
+    }
+    .body .legal {
+      width: 70%;
+    }
+.present{
+    color: green;
+   background-color: aqua;
+}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
+.calendar-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.month-year-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.slide-arrow {
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+}
+
+.slide-arrow:hover {
+  color: #000;
+}
+
+.prev {
+  margin-right: 10px;
+}
+
+.month-year-text {
+  font-size: 24px;
+  color: #333;
+}
+
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f5f5f5;
+}
+
+thead th {
+  padding: 10px;
+  font-weight: normal;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+tbody td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.present {
+  background-color: #c8e6c9;
+}
+
+.today {
+  background-color: #ffc107;
+}
+
+.selected {
+  background-color: #ff5722;
+  color: #fff;
+}
+</style>
+
+  <script src="https://cdn.bootcss.com/html2pdf.js/0.9.1/html2pdf.bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+
+var s =document.getElementById('d').value
+document.getElementById('s').innerHTML=s
+console.log("h");
+
+    function createPDF() {
+      var element = document.getElementById('ddd');
+      html2pdf(element, {
+        margin: 0,
+        padding: 0,
+        filename: 'MorsyMultimediafees.pdf',
+        image: { type: 'jpeg', quality: 2480,},
+        html2canvas: { scale:2, logging: true },
+        jsPDF: { unit: 'in', format: 'A3' },
+        class: createPDF
+      });
+    };
+
+    function numberToWords(num) {
+      const ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+      const tens = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+      const teens = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+      if (num == 0) return 'zero';
+
+      let words = '';
+
+      // handle thousands
+      if (Math.floor(num / 1000) > 0) {
+        words += numberToWords(Math.floor(num / 1000)) + ' thousand ';
+        num %= 1000;
+      }
+
+      // handle hundreds
+      if (Math.floor(num / 100) > 0) {
+        words += ones[Math.floor(num / 100)] + ' hundred ';
+        num %= 100;
+      }
+
+      // handle tens and ones
+      if (num > 0) {
+        if (num < 10) {
+          words += ones[num];
+        } else if (num >= 11 && num <= 19) {
+          words += teens[num - 11];
+        } else {
+          words += tens[Math.floor(num / 10)];
+          if (num % 10 > 0) words += '-' + ones[num % 10];
+        }
+      }
+
+      return words.trim();
+    }
+
+    // prompt the user for a number
+    const inputNumber = parseInt(document.getElementById('fees_words').innerHTML);
+    // call the numberToWords function with the input number
+    const words = numberToWords(inputNumber);
+    // display the result to the user
+    document.getElementById('fees_in_words').innerHTML = words
+    document.getElementById('fees_in_word').innerHTML = words
+
+
+  function pay(){
+    var pay_type=document.getElementById('pay_type').value;
+    var cheque=''
+    if(pay_type=='cheque'){
+      cheque+=' <label for="">cheque no</label><input required type="text" onkeypress="return isNumber(event)" name="payment_id" placeholder="cheque no" class="form-control w-100">'
+      document.getElementById('payIdfiled').innerHTML=cheque
+    }
+    else if(pay_type=='online'){
+      cheque+=' <label for="">transaction id</label><input required type="text" onkeypress="return isNumber(event)" name="payment_id" placeholder="trasaction id" class="form-control w-100">'
+      document.getElementById('payIdfiled').innerHTML=cheque
+    }
+    else{
+      document.getElementById('payIdfiled').innerHTML=cheque
+    }
+  }
+  
+
+</script>
+  <%-include('footer')%>
