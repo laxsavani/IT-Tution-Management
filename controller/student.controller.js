@@ -5,6 +5,7 @@ const Student = require("../models/student.model");
 const RecentsUpdates = require("../models/recentUpdates.model");
 const Manager = require("../models/manager.model")
 const payFees = require('../models/payFees.model')
+const bcrypt = require('bcrypt')
 
 const nodemailer = require('nodemailer');
 const cloudinary = require('../helper/cloudinary');
@@ -20,7 +21,8 @@ exports.loginStudent = async (req, res, next) => {
             res.render('student_login', { displayErrorEmail, displayErrorPassword });
             next();
         } else {
-            if (password != emailData.password) {
+            const match = await bcrypt.compare(password, emailData.password);
+            if (!match) {
                 const displayErrorEmail = "Password cannot match";
                 const displayErrorPassword = undefined;
                 res.render('student_login', { displayErrorEmail, displayErrorPassword });

@@ -54,7 +54,7 @@ app.post('/s',(req,res)=>{
 })
 app.use("/admin", adminRouter);
 app.use('/manager',managerRouter);
-// app.use('/student',studentRouter);
+app.use('/student',studentRouter);
 
 app.use((req,res,next)=>{
     res.render('404')
