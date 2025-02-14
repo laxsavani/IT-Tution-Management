@@ -17,7 +17,8 @@ exports.loginAdmin = async (req, res, next) => {
             res.render('admin_login', { displayErrorEmail, displayErrorPassword });
             next();
         } else {
-            if (password != emailData.password) {
+            const match = await bcrypt.compare(password, emailData.password);
+            if (!match) {
                 const displayErrorEmail = "Password cannot match";
                 const displayErrorPassword = undefined;
                 res.render('admin_login', { displayErrorEmail, displayErrorPassword });
