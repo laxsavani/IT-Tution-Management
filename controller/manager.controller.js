@@ -84,7 +84,7 @@ exports.managerAdmin = async (req, res) => {
         // var tim = String(time);
         // console.log(tim, 'k');
 
-     
+
         // console.log("OOOO", Date());
 
         res.render('manager_dashboard',
@@ -93,7 +93,7 @@ exports.managerAdmin = async (req, res) => {
                 studentData,
                 activeEnquiry,
                 deactiveEnquiry,
-                managerData,      
+                managerData,
             });
 
     } catch (error) {
@@ -365,7 +365,7 @@ exports.add_student_data = async (req, res) => {
         data = await Student.create(req.body);
         if (data) {
             console.log('addmission added successfully');
-            req.flash('success','student added successfully');
+            req.flash('success', 'student added successfully');
             return res.redirect('/manager/view_student');
         }
     } catch (err) {
@@ -393,59 +393,60 @@ exports.view_addmission_profile = async (req, res) => {
 
         // Student attendance data
         var ss = await Student.findById(req.params.id);
-        
-        const studentAttendance = ss.presents
-      
-        console.log(studentAttendance);
-        if(studentAttendance.length != 0){
-        // Create calendar for multiple months
-        const startYear = 2023;
-        const endYear = 2024;
-        const numMonths = 12;
-        let calendarHtml = '';
-        
-        for (let y = startYear; y <= endYear; y++) {
-          for (let m = 0; m < numMonths; m++) {
-            const month = m;
-            const monthCalendar = calendar.monthDays(y, month);
-        
-            // Generate calendar HTML
-            let monthHtml = `<div><h2>${new Date(
-              y,
-              month
-            ).toLocaleString('default', { month: 'long' })} ${y}</h2>`;
-        
-            monthHtml += '<table>';
-            for (let week of monthCalendar) {
-              monthHtml += '<tr>';
-              for (let day of week) {
-                const formattedDate = new Date(`${y}-${month + 1}-${day}`);
-                const attendance = studentAttendance.find(
-                  a =>
-                    new Date(a.date).toDateString() === formattedDate.toDateString()
-                );
-                const className = attendance && attendance.present ? 'present' : '';
-                monthHtml += `<td class="${className}">${day ? day : ''}</td>`;
-              }
-              monthHtml += '</tr>';
-            }
-            monthHtml += '</table></div>';
-            calendarHtml += monthHtml;
-          }
-        }
-        
-        // console.log(calendarHtml);
 
+        const studentAttendance = ss.presents
+
+        console.log(ss);
+        //     if(studentAttendance?.length != 0){
+        //     // Create calendar for multiple months
+        //     const startYear = 2023;
+        //     const endYear = 2024;
+        //     const numMonths = 12;
+        //     let calendarHtml = '';
+
+        //     for (let y = startYear; y <= endYear; y++) {
+        //       for (let m = 0; m < numMonths; m++) {
+        //         const month = m;
+        //         const monthCalendar = calendar.monthDays(y, month);
+
+        //         // Generate calendar HTML
+        //         let monthHtml = `<div><h2>${new Date(
+        //           y,
+        //           month
+        //         ).toLocaleString('default', { month: 'long' })} ${y}</h2>`;
+
+        //         monthHtml += '<table>';
+        //         for (let week of monthCalendar) {
+        //           monthHtml += '<tr>';
+        //           for (let day of week) {
+        //             const formattedDate = new Date(`${y}-${month + 1}-${day}`);
+        //             const attendance = studentAttendance.find(
+        //               a =>
+        //                 new Date(a.date).toDateString() === formattedDate.toDateString()
+        //             );
+        //             const className = attendance && attendance.present ? 'present' : '';
+        //             monthHtml += `<td class="${className}">${day ? day : ''}</td>`;
+        //           }
+        //           monthHtml += '</tr>';
+        //         }
+        //         monthHtml += '</table></div>';
+        //         calendarHtml += monthHtml;
+        //       }
+        //     }
+
+        //     // console.log(calendarHtml);
+
+        //     res.render('view_addmission_profile', {
+        //         profile,
+        //         last_fees,
+        //         calendarHtml,
+        //     })
+        // }
         res.render('view_addmission_profile', {
             profile,
             last_fees,
-            calendarHtml,
+            calendarHtml: ""
         })
-    }
-    res.render('view_addmission_profile', {
-        profile,
-        last_fees,
-    })
     } catch (err) {
 
         console.log(err);
@@ -491,7 +492,7 @@ exports.update_student_data = async (req, res) => {
             }
             console.log(result);
         });
-            
+
         req.body.image = uploadedProfileImageDetails.secure_url
         req.body.cloudinary_id = uploadedProfileImageDetails.public_id
         const updatedata = await Student.findByIdAndUpdate(req.body.id, req.body);
@@ -679,21 +680,21 @@ var attendance_data = [];
 
 exports.attendance = async (req, res) => {
 
-    var dd=attendance_data.flat();
+    var dd = attendance_data.flat();
     const today = new Date();
     const currentDate = today.toISOString().split('T')[0];
-    
+
     //   console.log(filteredData);
     const filteredData = dd.filter(item => {
         const presents = item.presents;
         if (presents && presents.length > 0) {
-          const dates = presents.map(obj => obj.date);
-          return !dates.includes(currentDate);
+            const dates = presents.map(obj => obj.date);
+            return !dates.includes(currentDate);
         }
         return true; // Include items without any presents
-      });
-      console.log(filteredData,filteredData.length,"(((");
-      
+    });
+    console.log(filteredData, filteredData.length, "(((");
+
     var data = filteredData
     res.render('attendance', { data });
 };
@@ -705,16 +706,16 @@ exports.batch_attendance = async (req, res) => {
     // var data = await Student.find({batch_time: req.body.batch});
     // const today = new Date();
 
-        const data = await Student.find({
-            batch_time: req.body.batch,
-            presents: {
-                $not: {
-                  $elemMatch: { date: today }
-                }
-              }
-          });     
-    
-          attendance_data=data
+    const data = await Student.find({
+        batch_time: req.body.batch,
+        presents: {
+            $not: {
+                $elemMatch: { date: today }
+            }
+        }
+    });
+
+    attendance_data = data
     // res.json({redirectTo:'/manager/attendance'})
     // console.log(data, 'OOOOOOOOOOO');
     res.redirect('/manager/attendance');
@@ -725,9 +726,9 @@ exports.presents = async (req, res) => {
     console.log(req.params)
     var today = new Date();
     var data = await Student.findByIdAndUpdate(req.params.id, {
-        $push: {  
+        $push: {
             presents: {
-                date:today.toISOString().split('T')[0],
+                date: today.toISOString().split('T')[0],
                 present: true
             }
         }
@@ -746,9 +747,9 @@ exports.absent = async (req, res) => {
     console.log(req.params)
     var today = new Date();
     var data = await Student.findByIdAndUpdate(req.params.id, {
-        $push: {  
+        $push: {
             presents: {
-                date:today.toISOString().split('T')[0],
+                date: today.toISOString().split('T')[0],
                 present: false
             }
         }
