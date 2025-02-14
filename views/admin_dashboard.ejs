@@ -247,95 +247,133 @@
 
 	</header>
 	<!-- [ Header ] end -->
-    <div class="pcoded-main-container bg-transparent d-flex flex-wrap">
-        <div class="card col-xl-6 p-4 mx-3" style="height: fit-content;">
-            <h4>Add Manager</h4>
-                    <form method="post" action="/admin">
+	<div class="pcoded-main-container bg-transparent d-flex flex-wrap">
+		<div class="card col-xl-6 p-4 mx-3" style="height: fit-content;">
+			<h4>Add Manager</h4>
+			<form method="post" action="/admin">
 
-                        <div class="form-floating">
-                            <label class="floatingInput mt-2">Username</label>
-                            <input type="text" class="form-control" placeholder="Username" id="Uname" name="managername">
-                        </div>
-                        <div class="form-floating">
-                            <label class="floatingInput mt-2">Email Address</label>
-                            <input type="email" class="form-control" placeholder="Email Address" id="Uemail"
-                                name="email">
-                        </div>
-                        <div class="form-floating">
-                            <label class="floatingInput mt-2">Create Password</label>
-                            <input type="Password" class="form-control" placeholder="Create Password" id="Ucreatepass"
-                                name="password">
-                        </div>
-                        <input type="submit" class="submit btn btn-outline-primary mt-3" onclick="return reload_page()"
-                            value="Add admin" name="submit">
+				<div class="form-floating">
+					<label class="floatingInput mt-2">Username</label>
+					<input type="text" class="form-control" placeholder="Username" id="Uname" name="managername">
+				</div>
+				<div class="form-floating">
+					<label class="floatingInput mt-2">Email Address</label>
+					<input type="email" class="form-control" placeholder="Email Address" id="Uemail" name="email">
+				</div>
+				<div class="form-floating">
+					<label class="floatingInput mt-2">Create Password</label>
+					<input type="Password" class="form-control" placeholder="Create Password" id="Ucreatepass"
+						name="password">
+				</div>
+				<input type="submit" class="submit btn btn-outline-primary mt-3" onclick="return reload_page()"
+					value="Add admin" name="submit">
 
-                    </form>
-        </div>
-        <div class="card col-xl-4 p-4 mx-3" style="height: fit-content;">
-            <h4>Add updates</h4>
-            <form method="post" action="/admin/recents_updates" enctype="multipart/form-data">
+			</form>
+		</div>
+		<div class="card col-xl-4 p-4 mx-3" style="height: fit-content;">
+			<h4>Add updates</h4>
+			<form method="post" action="/admin/recents_updates" enctype="multipart/form-data">
 
-                <div class="form-floating">
-                    <label class="floatingInput mt-2">message</label>
-                    <input type="text" class="form-control" placeholder="message" name="message">
-                </div>
+				<div class="form-floating">
+					<label class="floatingInput mt-2">message</label>
+					<input type="text" class="form-control" placeholder="message" name="message">
+				</div>
 
-                <div class="form-floating">
-                    <label class="floatingInput mt-2">Add post</label>
-                    <input type="file" class="form-control" placeholder="Confirm Password" id="avatar" name="image_post" multiple>
-                </div>
-                <input type="submit" class="submit btn btn-outline-primary mt-3" value="add post"
-                    onclick="return reload_page()" name="submit">
+				<div class="form-floating">
+					<label class="floatingInput mt-2">Add post</label>
+					<input type="file" class="form-control" placeholder="Confirm Password" id="avatar" name="image_post"
+						multiple>
+				</div>
+				<input type="submit" class="submit btn btn-outline-primary mt-3" value="add post"
+					onclick="return reload_page()" name="submit">
 
-            </form>
-        </div>
+			</form>
+		</div>
 
-        <div class="col-12 col-lg-8">
-            <div class="col-md-12 p-0">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Admin Table</h5>
-                    </div>
-                    <div class="card-body table-border-style">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>no</th>
-                                        <th>manager name</th>
-                                        <th>email</th>
-                                        <th>password</th>
-                                        <th>action</th>
+		<div class="col-12 col-lg-8">
+			<div class="col-md-12 p-0">
+				<div class="card">
+					<div class="card-header">
+						<h5>Admin Table</h5>
+					</div>
+					<div class="card-body table-border-style">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>no</th>
+										<th>manager name</th>
+										<th>email</th>
+										<th>action</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% var no=1 ; for(var i of managerData){%>
-                                        <tr>
-                                            <td>
-                                                <%= no++ %>
-                                            </td>
-                                            <td>
-                                                <%=i.managername%>
-                                            </td>
-                                            <td>
-                                                <%=i.email%>
-                                            </td>
-                                            <td>
-                                                <%=i.password%>
-                                            </td>
-                                            <td><a href="/admin/delete_manager/<%=i.id%>" class="btn btn-primary px-2 py-1">delete</a></td>
-                                        </tr>
-                                        <%}%>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </div>
-    <script>
-    </script>
+									</tr>
+								</thead>
+								<tbody>
+									<% var no=1 ; for(var i of managerData){%>
+										<tr>
+											<td>
+												<%= no++ %>
+											</td>
+											<td>
+												<%=i.managername%>
+											</td>
+											<td>
+												<%=i.email%>
+											</td>
 
-    <%- include('footer') %>
+											<td><a href="/admin/delete_manager/<%=i.id%>"
+													class="btn btn-primary px-2 py-1">delete</a></td>
+										</tr>
+										<%}%>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-lg-8">
+			<div class="col-md-12 p-0">
+				<div class="card">
+					<div class="card-header">
+						<h5>student Table</h5>
+					</div>
+					<div class="card-body table-border-style">
+						<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>no</th>
+										<th>manager name</th>
+										<th>email</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<% var no=1 ; for(var i of studentData){%>
+										<tr>
+											<td>
+												<%= no++ %>
+											</td>
+											<td>
+												<%=i.name%>
+											</td>
+											<td>
+												<%=i.email%>
+											</td>
+
+
+										</tr>
+										<%}%>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	</script>
+
+	<%- include('footer') %>
