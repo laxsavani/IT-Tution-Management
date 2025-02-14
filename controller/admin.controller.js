@@ -73,7 +73,7 @@ exports.managerRegister = async (req, res, next) => {
         const managername = req.body.managername;
         const email = req.body.email;
         const password = req.body.password; 
-        const epassword = await bcrypt.hash(password, 10)
+        const epassword = await bcrypt.hash(password, 15)
         const managerInsert = new Manager({
             managername: managername,
             email: email,
