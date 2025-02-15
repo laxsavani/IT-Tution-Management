@@ -244,23 +244,21 @@
             </div><!--End Info-->
           </div><!--End InvoiceTop-->
 
-
-
           <div id="invoice-mid">
 
             <div class="clientlogo"></div>
-            <div class="info">
+            <div class="info ">
               <h2>Name: <%=profile.name %>
               </h2>
-              <p class="m-0">student email : <%=profile.email%>
+              <p class="m-0">&ensp;&emsp;student email : <%=profile.email%>
               </p>
-              <p class="mt-2">student phone : <%=profile.phone%>
+              <p class="mt-0">&ensp;&emsp;student phone : <%=profile.phone%>
               </p>
             </div>
+            <br><br>
             <%if(last_fees.length==1){%>
               <div id="project">
-                <h2>Fees Description</h2>
-                <p class="fs-2 m-0">Fees paid by : <%=last_fees[0]['pay_type']%>
+                <p class="fs-0 m-0">&ensp;&ensp;Fees paid by : <%=last_fees[0]['pay_type']%>
                 </p>
                 <p class="mt-2">Date of paying fees : <%=last_fees[0]['date']%>
                 </p>
@@ -295,9 +293,10 @@
                   </td>
                 </tr>
                 <tr class="tabletitle">
-                  <td colspan="2" style="font-size: 1.2rem;">fees in words : <span id="fees_in_words"></span></td>
+                  <td colspan="2" style="font-size: 1.2rem;">fees in words : <span id="fees_in_word"></span></td>
                   <td class="Rate">
                     <h2 >Total :</h2>
+           
                   </td>
                   <td class="payment">
                     <h2 id="fees_words" class="m-0" style="transform: translateX(13px);">
@@ -311,7 +310,7 @@
                       <%=last_fees[0]['pay_type']%>
                         No : <%=profile.payment_id%>
                       <%}%>
-                    <%if(last_fees[0]['pay_type']=='online'){%>
+                      <%if(last_fees[0]['pay_type']=='online'){%>
                         transaction Id : <%=profile.payment_id%>
                       <%}%>
                   </td>
@@ -350,23 +349,21 @@
             </div><!--End Info-->
           </div><!--End InvoiceTop-->
 
-
-
           <div id="invoice-mid">
 
             <div class="clientlogo"></div>
-            <div class="info">
+            <div class="info ">
               <h2>Name: <%=profile.name %>
               </h2>
-              <p class="m-0">student email : <%=profile.email%>
+              <p class="m-0">&ensp;&emsp;student email : <%=profile.email%>
               </p>
-              <p class="mt-2">student phone : <%=profile.phone%>
+              <p class="mt-0">&ensp;&emsp;student phone : <%=profile.phone%>
               </p>
             </div>
+            <br><br>
             <%if(last_fees.length==1){%>
               <div id="project">
-                <h2>Fees Description</h2>
-                <p class="fs-2 m-0">Fees paid by : <%=last_fees[0]['pay_type']%>
+                <p class="fs-0 m-0">&ensp;&ensp;Fees paid by : <%=last_fees[0]['pay_type']%>
                 </p>
                 <p class="mt-2">Date of paying fees : <%=last_fees[0]['date']%>
                 </p>
