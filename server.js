@@ -45,16 +45,14 @@ const managerRouter = require("./routers/manager.routes");
 const studentRouter = require("./routers/student.routes");
 
 app.get('/',(req,res)=>{
-
-    res.redirect('/manager')
-
+    res.sendFile(path.join(__dirname, 'index.html'))
 })
 app.post('/s',(req,res)=>{
     console.log(req.body);
 })
 app.use("/admin", adminRouter);
 app.use('/manager',managerRouter);
-// app.use('/student',studentRouter);
+app.use('/student',studentRouter);
 
 app.use((req,res,next)=>{
     res.render('404')
