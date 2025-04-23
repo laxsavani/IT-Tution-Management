@@ -28,6 +28,10 @@ mongoose.connect(db, {
       })
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
+
+// Set Mongoose strictQuery option
+mongoose.set('strictQuery', false);
+
 app.use(flash());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

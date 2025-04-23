@@ -18,15 +18,13 @@ exports.loginStudent = async (req, res, next) => {
         if (emailData == null) {
             const displayErrorEmail = "Email cannot match";
             const displayErrorPassword = undefined;
-            res.render('student_login', { displayErrorEmail, displayErrorPassword });
-            next();
+            return res.render('student_login', { displayErrorEmail, displayErrorPassword });
         } else {
             const match = await bcrypt.compare(password, emailData.password);
             if (!match) {
                 const displayErrorEmail = "Password cannot match";
                 const displayErrorPassword = undefined;
-                res.render('student_login', { displayErrorEmail, displayErrorPassword });
-                next();
+                return res.render('student_login', { displayErrorEmail, displayErrorPassword });
             } else {
                 const token = await jwt.sign({ _id: emailData._id }, process.env.SECRET_KEY);
                 res.cookie("jwt", token, {
@@ -35,12 +33,12 @@ exports.loginStudent = async (req, res, next) => {
                 });
                 
                 req.flash('success','login successfully');
-                res.redirect("/student");
+                return res.redirect("/student");
             }
         }
     } catch (error) {
         console.log("manager Loginmanager Error", error);
-        res.status(500).json({
+        return res.status(500).json({
             message: "SOMETHING WENT WRONG",
             status: 500
         })

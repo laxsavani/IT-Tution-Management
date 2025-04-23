@@ -14,15 +14,13 @@ exports.loginAdmin = async (req, res, next) => {
             if (emailData == null) {
                 const displayErrorEmail = "Email cannot match";
                 const displayErrorPassword = undefined;
-                res.render('admin_login', { displayErrorEmail, displayErrorPassword });
-                next();
+                return res.render('admin_login', { displayErrorEmail, displayErrorPassword });
             } else {
                 const match = await bcrypt.compare(password, emailData.password);
                 if (!match) {
                     const displayErrorEmail = "Password cannot match";
                     const displayErrorPassword = undefined;
-                    res.render('admin_login', { displayErrorEmail, displayErrorPassword });
-                    next();
+                    return res.render('admin_login', { displayErrorEmail, displayErrorPassword });
                 } else {
                     const token = await jwt.sign({ _id: emailData._id }, process.env.SECRET_KEY);
                     res.cookie("jwt", token, {
@@ -30,12 +28,12 @@ exports.loginAdmin = async (req, res, next) => {
                         httpOnly: true
                     });
                     req.flash("success", "hello")
-                    res.redirect("/admin");
+                    return res.redirect("/admin");
                 }
             }
         } catch (error) {
             console.log("manager Loginmanager Error", error);
-            res.status(500).json({
+            return res.status(500).json({
                 message: "SOMETHING WENT WRONG",
                 status: 500
             })
