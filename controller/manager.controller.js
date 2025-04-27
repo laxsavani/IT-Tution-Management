@@ -393,55 +393,56 @@ exports.view_addmission_profile = async (req, res) => {
 
         // Student attendance data
         var ss = await Student.findById(req.params.id);
-
+        if(!ss.presents) ss.presents = []
+        
         const studentAttendance = ss.presents
 
         console.log(ss);
-        //     if(studentAttendance?.length != 0){
-        //     // Create calendar for multiple months
-        //     const startYear = 2023;
-        //     const endYear = 2024;
-        //     const numMonths = 12;
-        //     let calendarHtml = '';
+            if(studentAttendance?.length != 0){
+            // Create calendar for multiple months
+            const startYear = 2025;
+            const endYear = 2026;
+            const numMonths = 12;
+            let calendarHtml = '';
 
-        //     for (let y = startYear; y <= endYear; y++) {
-        //       for (let m = 0; m < numMonths; m++) {
-        //         const month = m;
-        //         const monthCalendar = calendar.monthDays(y, month);
+            for (let y = startYear; y <= endYear; y++) {
+              for (let m = 0; m < numMonths; m++) {
+                const month = m;
+                const monthCalendar = calendar.monthDays(y, month);
 
-        //         // Generate calendar HTML
-        //         let monthHtml = `<div><h2>${new Date(
-        //           y,
-        //           month
-        //         ).toLocaleString('default', { month: 'long' })} ${y}</h2>`;
+                // Generate calendar HTML
+                let monthHtml = `<div><h2>${new Date(
+                  y,
+                  month
+                ).toLocaleString('default', { month: 'long' })} ${y}</h2>`;
 
-        //         monthHtml += '<table>';
-        //         for (let week of monthCalendar) {
-        //           monthHtml += '<tr>';
-        //           for (let day of week) {
-        //             const formattedDate = new Date(`${y}-${month + 1}-${day}`);
-        //             const attendance = studentAttendance.find(
-        //               a =>
-        //                 new Date(a.date).toDateString() === formattedDate.toDateString()
-        //             );
-        //             const className = attendance && attendance.present ? 'present' : '';
-        //             monthHtml += `<td class="${className}">${day ? day : ''}</td>`;
-        //           }
-        //           monthHtml += '</tr>';
-        //         }
-        //         monthHtml += '</table></div>';
-        //         calendarHtml += monthHtml;
-        //       }
-        //     }
+                monthHtml += '<table>';
+                for (let week of monthCalendar) {
+                  monthHtml += '<tr>';
+                  for (let day of week) {
+                    const formattedDate = new Date(`${y}-${month + 1}-${day}`);
+                    const attendance = studentAttendance.find(
+                      a =>
+                        new Date(a.date).toDateString() === formattedDate.toDateString()
+                    );
+                    const className = attendance && attendance.present ? 'present' : '';
+                    monthHtml += `<td class="${className}">${day ? day : ''}</td>`;
+                  }
+                  monthHtml += '</tr>';
+                }
+                monthHtml += '</table></div>';
+                calendarHtml += monthHtml;
+              }
+            }
 
-        //     // console.log(calendarHtml);
+            // console.log(calendarHtml);
 
-        //     res.render('view_addmission_profile', {
-        //         profile,
-        //         last_fees,
-        //         calendarHtml,
-        //     })
-        // }
+            res.render('view_addmission_profile', {
+                profile,
+                last_fees,
+                calendarHtml,
+            })
+        }
         res.render('view_addmission_profile', {
             profile,
             last_fees,

@@ -7,6 +7,7 @@ const Manager = require("../models/manager.model")
 const payFees = require('../models/payFees.model')
 const bcrypt = require('bcrypt')
 
+
 const nodemailer = require('nodemailer');
 const cloudinary = require('../helper/cloudinary');
 
